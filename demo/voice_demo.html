@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voice Email Editor - Demo</title>
+    <style>
+        body { aggregatet: white; padding: 40px; font-family: Arial; }
+        .email-box { border: 2px solid #667eea; padding: 20px; margin: 20px 0; background: #f8f9fa; }
+        button { padding: 15px 30px; font-size: 16px; background: #667eea; color: white; border: none; cursor: pointer; border-radius: 5px; }
+        button.recording { background: #f5576c; }
+        .status { margin: 15px 0; padding: 10px; background: #e7f3ff; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Voice-Enabled Email Editor</h1>
+    <div class="email-box">
+        <h3>Draft Email</h3>
+        <p><strong>Subject:</strong> <span id="subject">Re: Website inquiry</span></p>
+        <div id="body">Dear Client, Thank you for your inquiry. We will respond shortly. Best regards.</div>
+    </div>
+    <button id="recordBtn" onclick="startRecord()">Start Voice Editing</button>
+    <div id="status"></div>
+    <script>
+        let recognition;
+        if ('webkitSpeechRecognition' in window) {
+            recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = 'en-US';
+            
+            recognition.onresult = function(event) {
+                const command = event.results[0][0].transcript;
+                document.getElementById('status').innerHTML = 'You said: ' + command;
+                processCommand(command);
+            };
+            
+            recognition.onerror = function(event) {
+                document.getElementById('status').innerHTML = 'Error: ' + event.error;
+            };
+        }
+        
+        function startRecord() {
+            if (recognition) {
+                document.getElementById('recordBtn').classList.add('recording');
+                document.getElementById('recordBtn').textContent = 'Listening...';
+                recognition.start();
+                setTimeout(function() {
+                    recognition.stop();
+                    document.getElementById('recordBtn').classList.remove('recording');
+                    document.getElementById('recordBtn').textContent = 'Start Voice Editing';
+                }, 5000);
+            }
+        }
+        
+        function processCommand(cmd) {
+            const lower = cmd.toLowerCase();
+            if (lower.includes('formal')) {
+                document.getElementById('body').innerHTML = 'Dear Valued Client,<br><br>Thank you for your inquiry regarding our services.<br><br>We appreciate your business and will respond to your query shortly.<br><br>Respectfully yours,<br>Support Team';
+            } else if (lower.includes('add')) {
+                const addText = cmd.split('add')[1] || '';
+                document.getElementById('body').innerHTML += '<br><br>' + addText;
+            }
+        }
+    </script>
+</body>
+</html>
+
