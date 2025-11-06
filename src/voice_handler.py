@@ -1,6 +1,6 @@
 """
-Voice-to-Text Handler for Email Editing
-Provides hands-free email editing through speech-to-text functionality
+Voice to Text Handler for Email Editing
+Provides hands free email editing through speech to text functionality
 """
 import json
 import logging
@@ -19,7 +19,7 @@ except ImportError:
 
 class VoiceHandler:
     """
-    Handles voice-to-text conversion for email editing workflows.
+    Handles voice to text conversion for email editing workflows.
     Supports both browser Web Speech API (demo) and AWS Transcribe (production).
     """
     
