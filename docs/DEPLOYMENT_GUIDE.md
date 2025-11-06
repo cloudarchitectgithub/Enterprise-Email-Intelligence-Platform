@@ -1,6 +1,6 @@
 # Email Assistant - EC2 Deployment Guide
 
-## 🚀 Pre-Deployment Checklist
+## 🚀 Pre Deployment Checklist
 
 ---
 
@@ -19,7 +19,7 @@
 
 ---
 
-## 🛠️ Step-by-Step Deployment
+## 🛠️ Step by Step Deployment
 
 ### Step 1: Upload Project to EC2
 ```bash
