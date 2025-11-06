@@ -1,8 +1,8 @@
-# 🛡️ Multi-Tier Fallback Strategy
+# 🛡️ Multi Tier Fallback Strategy
 
 ## Overview
 
-This system implements a **production-ready, multi-tier fallback strategy** to ensure high availability and resilience even when primary AI models fail or are unavailable.
+This system implements a **production ready, multi tier fallback strategy** to ensure high availability and resilience even when primary AI models fail or are unavailable.
 
 ---
 
@@ -19,7 +19,7 @@ In enterprise environments, **system availability is critical**. If the primary 
 
 ---
 
-## 🏗️ Architecture: 3-Tier Fallback System
+## 🏗️ Architecture: 3 Tier Fallback System
 
 ### **Tier 1: Primary Model (Claude 3 Sonnet)**
 - **Model**: `anthropic.claude-3-sonnet-20240229-v1:0`
@@ -34,7 +34,7 @@ In enterprise environments, **system availability is critical**. If the primary 
 - **Cost**: ~60% cheaper than Sonnet
 - **Speed**: ~2x faster response time
 
-### **Tier 3: Rule-Based Classification**
+### **Tier 3: Rule Based Classification**
 - **Technology**: Keyword matching + heuristics
 - **Capability**: Basic classification without AI
 - **Use Case**: Emergency fallback when all AI models fail
@@ -79,7 +79,7 @@ In enterprise environments, **system availability is critical**. If the primary 
          │      │               │
          │      │               ▼
          │      │    ┌─────────────────────────┐
-         │      │    │  Tier 3: Rule-Based     │
+         │      │    │  Tier 3: Rule Based     │
          │      │    │  • Keyword matching     │
          │      │    │  • Always succeeds      │
          │      │    └─────────┬───────────────┘
@@ -120,7 +120,7 @@ In enterprise environments, **system availability is critical**. If the primary 
 
 ---
 
-## 📊 Rule-Based Classification Logic
+## 📊 Rule Based Classification Logic
 
 When all AI models fail, the system uses intelligent keyword matching:
 
@@ -153,7 +153,7 @@ low:     short emails (<100 chars) without urgent keywords
 **Smart Cost Management:**
 - Primary model for best quality
 - Automatic fallback reduces costs during outages
-- Rule-based tier = zero AI costs
+- Rule based tier = zero AI costs
 
 ---
 
@@ -172,7 +172,7 @@ low:     short emails (<100 chars) without urgent keywords
 
 ### CloudWatch Alarms:
 - Alert when fallback rate > 10%
-- Alert when rule-based fallback used
+- Alert when rule based fallback used
 - Track model availability trends
 
 ---
@@ -244,7 +244,7 @@ Ensure Lambda has access to **both** models:
 3. **User Experience**: No failed requests, always get a response
 4. **Monitoring**: Clear visibility into system health
 5. **Scalability**: Handles rate limits gracefully
-6. **Enterprise-Ready**: Production-grade error handling
+6. **Enterprise Ready**: Production grade error handling
 
 ---
 
@@ -253,10 +253,10 @@ Ensure Lambda has access to **both** models:
 1. **Circuit Breaker Pattern**: Skip failing tier temporarily
 2. **Model Health Checks**: Proactive model availability testing
 3. **A/B Testing**: Compare Sonnet vs Haiku accuracy
-4. **ML-Based Fallback**: Train lightweight model for Tier 3
+4. **ML Based Fallback**: Train lightweight model for Tier 3
 5. **Regional Failover**: Try different AWS regions
 
 ---
 
-**This fallback strategy demonstrates production-ready thinking and shows understanding of real-world enterprise challenges.** 🎯
+**This fallback strategy demonstrates production ready thinking and shows understanding of real world enterprise challenges.** 🎯
 
